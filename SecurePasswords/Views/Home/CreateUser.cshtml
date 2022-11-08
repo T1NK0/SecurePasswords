@@ -1,0 +1,77 @@
+﻿@model UserViewModel
+@{
+    ViewData["Title"] = "Create User";
+}
+
+<div class="card shadow border-light mb-3" style="max-width: auto;">
+    <div class="card-header text-center border-light">
+        <h1>@ViewData["Title"]</h1>
+    </div>
+    <div class="card-body">
+        <form asp-controller="Home" asp-action="CreateUser" method="post">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6 mx-auto">
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="mb-3">
+                                        <label asp-for="Username" class="form-label">Username</label>
+                                        <input class="form-control" asp-for="Username" placeholder="Username" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="mb-3">
+                                        <label asp-for="Password" class="form-label">Username</label>
+                                        <input class="form-control" asp-for="Password" placeholder="Password" type="password" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="mb-3">
+                                        <label asp-for="SaltKey" class="form-label">Salt key size</label>
+                                        <input class="form-control" asp-for="SaltKey" placeholder="Key size in number" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" value="Create">Create</button>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="card-footer border-light text-center">
+        <p>Let's secure you're password1</p>
+    </div>
+</div>
+<!-- OUTPUT -->
+@* <div class="row">
+    <div class="col"></div>
+    <div class="col-8">
+    <div class="">
+    @if (Model.OutputHashValue != null)
+    {
+    <div class="card bg-success border-light">
+    <div class="card-body">
+    <h6 class="alert-heading">Input: @Model.OutputHashString</h6>
+    <h6 class="alert-heading">Hashing value: @Model.OutputHashValue</h6>
+    </div>
+    </div>
+    }
+    </div>
+    </div>
+    <div class="col"></div>
+    </div>*@
