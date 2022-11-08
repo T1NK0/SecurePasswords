@@ -30,7 +30,7 @@ namespace SecurePasswords.Controllers
 
             string hashValue = String.Concat(model.Password + user.SaltKey);
             string newHashing = _hashing.SHA256HashValue(hashValue);
-
+            
             if (newHashing == user.UserPassword)
             {
                 //Creates a new salt, and a new hash value for the password.
@@ -53,12 +53,8 @@ namespace SecurePasswords.Controllers
             }
             else
             {
-                model.loginAttempts = model.loginAttempts + 1;
-                return View();
+                return View(new Models.LoginViewModel(model.LoginAttempts++));
             }
-
-                //return RedirectToAction("FailLogin");
-
         }
 
         [HttpGet]

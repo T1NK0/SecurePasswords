@@ -9,38 +9,49 @@
         <h1>@ViewData["Title"]</h1>
     </div>
     <div class="card-body">
-        <form asp-controller="Login" asp-action="Index" method="post">
-            <div class="container">
-                <div class="row">
-                    <div class="col-6 mx-auto">
-                        <div class="row">
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="mb-3">
-                                        <label asp-for="Username" class="form-label">Username</label>
-                                        <input class="form-control" asp-for="Username" placeholder="Username" />
+        @*@if ( Model.LoginAttempts <= 5)
+        {*@
+            <form asp-controller="Login" asp-action="Index" method="post">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-6 mx-auto">
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="mb-3">
+                                            <label asp-for="Username" class="form-label">Username</label>
+                                            <input class="form-control" asp-for="Username" placeholder="Username" />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="mb-3">
-                                        <label asp-for="Password" class="form-label">Username</label>
-                                        <input class="form-control" asp-for="Password" placeholder="Password" type="password" />
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="mb-3">
+                                            <label asp-for="Password" class="form-label">Username</label>
+                                            <input class="form-control" asp-for="Password" placeholder="Password" type="password" />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
+                            <button type="submit" class="btn btn-primary" value="Create">Create</button>
                         </div>
-
-                        <button type="submit" class="btn btn-primary" value="Create">Create</button>
-
                     </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        @*}*@
+        @*else*@
+        @*{*@
+            @*<div class="card bg-danger text-light border-light">
+                <div class="card-body">
+                    <h6 class="alert-heading">For mange logins, din acconut bliver nu blokeret</h6>
+                </div>
+            </div>*@
+        @*}*@
     </div>
 
     <div class="card-footer border-light text-center">
