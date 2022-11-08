@@ -31,15 +31,28 @@ namespace SecurePasswords.Controllers
             string hashValue = String.Concat(model.Password, user.SaltKey);
             string newHashing = _hashing.SHA256HashValue(hashValue);
 
+            if (newHashing == user.UserPassword)
+            {
+                return RedirectToAction("SuccessLogin");
+            }
+            else
+            {
+                model.loginAttempts = model.loginAttempts + 1;
+            }
+
             return View();
+                //return RedirectToAction("FailLogin");
+
         }
 
-        public IActionResult Success()
+        [HttpGet]
+        public IActionResult SuccessLogin()
         {
             return View();
         }
 
-        public IActionResult Failure()
+        [HttpGet]
+        public IActionResult FailLogin()
         {
             return View();
         }
