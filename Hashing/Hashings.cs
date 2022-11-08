@@ -11,6 +11,6 @@ namespace Hashing
         string SHA1HashValue(string convertedKeyHashedValue);
         string SHA256HashValue(string convertedKeyHashedValue);
         string MD5HashValue(string convertedKeyHashedValue);
-        string CreateSalt(string SaltSize);
+        string CreateSalt();
     }
 }

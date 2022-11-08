@@ -33,14 +33,23 @@ namespace SecurePasswords.Controllers
 
             if (newHashing == user.UserPassword)
             {
+                string newUserSalt = _hashing.CreateSalt();
+                string newHashPassword = String.Concat(model.Password, newUserSalt);
+                string newHashingPassword = _hashing.SHA256HashValue(hashValue);
+                user.UserPassword = newHashingPassword;
+                user.SaltKey = newUserSalt;
+
+                _dataContext.Update(user);
+                _dataContext.SaveChanges();
+
                 return RedirectToAction("SuccessLogin");
             }
             else
             {
                 model.loginAttempts = model.loginAttempts + 1;
+                return View();
             }
 
-            return View();
                 //return RedirectToAction("FailLogin");
 
         }

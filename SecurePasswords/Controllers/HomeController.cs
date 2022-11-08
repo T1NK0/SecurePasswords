@@ -48,7 +48,7 @@ namespace SecurePasswords.Controllers
 
             newUser.Username = model.Username;
 
-            newUser.SaltKey = Hashings.CreateSalt(model.SaltKey);
+            newUser.SaltKey = Hashings.CreateSalt();
 
             string passwordWithSalt = String.Concat(model.Password + newUser.SaltKey);
             string passwordHashed = Hashings.SHA256HashValue(passwordWithSalt);

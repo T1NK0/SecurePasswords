@@ -19,10 +19,6 @@ namespace Hashing
                 byte[] stringConvertedToBytes = Encoding.UTF8.GetBytes(formValue);
                 byte[] result = sha1Hashing.ComputeHash(stringConvertedToBytes);
 
-
-                //Hex Value
-                Console.WriteLine(BitConverter.ToString(result));
-
                 //Call to the string builder, with the bytearray to get a string back 
                 return MyStringBuilder(result);
             }
@@ -37,8 +33,6 @@ namespace Hashing
                 byte[] stringConvertedToBytes = Encoding.UTF8.GetBytes(formValue);
                 byte[] result = sha1Hashing.ComputeHash(stringConvertedToBytes);
 
-                Console.WriteLine(BitConverter.ToString(result));
-
                 //Call to the string builder, with the bytearray to get a string back 
                 return MyStringBuilder(result);
             }
@@ -52,8 +46,6 @@ namespace Hashing
             {
                 byte[] stringConvertedToBytes = Encoding.UTF8.GetBytes(formValue);
                 byte[] result = sha1Hashing.ComputeHash(stringConvertedToBytes);
-
-                Console.WriteLine(BitConverter.ToString(result));
 
                 //Call to the string builder, with the bytearray to get a string back 
                 return MyStringBuilder(result);
@@ -73,12 +65,11 @@ namespace Hashing
             return sb.ToString();
         }
 
-        public string CreateSalt(string saltSize)
+        public string CreateSalt()
         {            
             //Generate a cryptographic random number.
             RandomNumberGenerator rng = RandomNumberGenerator.Create();
-            int saltSizeInt = Convert.ToInt32(saltSize);
-            byte[] buff = new byte[saltSizeInt];
+            byte[] buff = new byte[32];
             rng.GetBytes(buff);
 
             // Return a Base64 string representation of the random number.
