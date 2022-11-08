@@ -1,4 +1,49 @@
-﻿
+﻿@model LoginViewModel;
+
 @{
     ViewData["Title"] = "Login";
 }
+
+<div class="card shadow border-light mb-3" style="max-width: auto;">
+    <div class="card-header text-center border-light">
+        <h1>@ViewData["Title"]</h1>
+    </div>
+    <div class="card-body">
+        <form asp-controller="Login" asp-action="Index" method="post">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6 mx-auto">
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="mb-3">
+                                        <label asp-for="Username" class="form-label">Username</label>
+                                        <input class="form-control" asp-for="Username" placeholder="Username" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="mb-3">
+                                        <label asp-for="Password" class="form-label">Username</label>
+                                        <input class="form-control" asp-for="Password" placeholder="Password" type="password" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" value="Create">Create</button>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="card-footer border-light text-center">
+        <p>Join the fun, LOGIN!</p>
+    </div>
+</div>

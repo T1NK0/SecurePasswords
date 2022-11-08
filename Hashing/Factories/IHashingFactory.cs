@@ -8,6 +8,6 @@ namespace Hashing.Factories
 {
     public interface IHashingFactory
     {
-        IHashing CreateHashing();
+        Hashings CreateHashing();
     }
 }

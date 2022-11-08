@@ -12,7 +12,7 @@ namespace SecurePasswords.Controllers
         private readonly ILogger<HomeController> _logger;
         //Instantiates when constructor is called through dependency injection.
         private readonly DataContext dataContext;
-        private readonly IHashing Hashings = new Hashings();
+        private readonly Hashings Hashings = new Hashings();
 
         public HomeController(ILogger<HomeController> logger, DataContext dataContext )
         {
@@ -58,6 +58,11 @@ namespace SecurePasswords.Controllers
             dataContext.Users.Add(newUser);
             dataContext.SaveChanges();
 
+            return View();
+        }
+
+        public IActionResult Login()
+        {
             return View();
         }
 

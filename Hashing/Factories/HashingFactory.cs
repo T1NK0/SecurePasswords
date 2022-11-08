@@ -8,7 +8,7 @@ namespace Hashing.Factories
 {
     public class HashingFactory : IHashingFactory
     {
-        public IHashing CreateHashing()
+        public Hashings CreateHashing()
         {
             return new Hashings();
         }
