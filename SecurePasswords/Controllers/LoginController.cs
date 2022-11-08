@@ -28,20 +28,27 @@ namespace SecurePasswords.Controllers
         {
             Data.Models.Users user = _dataContext.Users.FirstOrDefault(x => x.Username.Equals(model.Username));
 
-            string hashValue = String.Concat(model.Password, user.SaltKey);
+            string hashValue = String.Concat(model.Password + user.SaltKey);
             string newHashing = _hashing.SHA256HashValue(hashValue);
 
             if (newHashing == user.UserPassword)
             {
+                //Creates a new salt, and a new hash value for the password.
                 string newUserSalt = _hashing.CreateSalt();
-                string newHashPassword = String.Concat(model.Password, newUserSalt);
-                string newHashingPassword = _hashing.SHA256HashValue(hashValue);
+                string newHashPassword = String.Concat(model.Password + newUserSalt);
+
+                //Hashes with the new key, to create a pepper.
+                string newHashingPassword = _hashing.SHA256HashValue(newHashPassword);
+
+                //Sets our new password and salt on our user.
                 user.UserPassword = newHashingPassword;
                 user.SaltKey = newUserSalt;
 
+                //Updates the user in the database.
                 _dataContext.Update(user);
                 _dataContext.SaveChanges();
 
+                //Redirect to success on login page.
                 return RedirectToAction("SuccessLogin");
             }
             else
