@@ -33,5 +33,15 @@ namespace SecurePasswords.Controllers
 
             return View();
         }
+
+        public IActionResult Success()
+        {
+            return View();
+        }
+
+        public IActionResult Failure()
+        {
+            return View();
+        }
     }
 }
