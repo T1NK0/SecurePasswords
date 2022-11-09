@@ -1,6 +1,7 @@
 ﻿using Data;
 using Hashing;
 using Microsoft.AspNetCore.Mvc;
+using SecurePasswords.Models;
 
 namespace SecurePasswords.Controllers
 {
@@ -18,9 +19,9 @@ namespace SecurePasswords.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            Models.LoginViewModel loginViewModel = new Models.LoginViewModel();
+            Models.LoginViewModel loginViewModel = new LoginViewModel();
 
-            return View(loginViewModel);
+            return View(new LoginViewModel());
         }
 
         [HttpPost]
@@ -53,7 +54,9 @@ namespace SecurePasswords.Controllers
             }
             else
             {
-                return View(new Models.LoginViewModel(model.LoginAttempts++));
+                var newAttemptValue = model.LoginAttempts + 1;
+
+                return View(new Models.LoginViewModel(newAttemptValue));
             }
         }
 

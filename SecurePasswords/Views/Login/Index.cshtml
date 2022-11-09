@@ -9,8 +9,8 @@
         <h1>@ViewData["Title"]</h1>
     </div>
     <div class="card-body">
-        @*@if ( Model.LoginAttempts <= 5)
-        {*@
+        @if ( Model.LoginAttempts <= 5)
+        {
             <form asp-controller="Login" asp-action="Index" method="post">
                 <div class="container">
                     <div class="row">
@@ -43,15 +43,15 @@
                     </div>
                 </div>
             </form>
-        @*}*@
-        @*else*@
-        @*{*@
-            @*<div class="card bg-danger text-light border-light">
+        }
+        else
+        {
+            <div class="card bg-danger text-light border-light">
                 <div class="card-body">
                     <h6 class="alert-heading">For mange logins, din acconut bliver nu blokeret</h6>
                 </div>
-            </div>*@
-        @*}*@
+            </div>
+        }
     </div>
 
     <div class="card-footer border-light text-center">
